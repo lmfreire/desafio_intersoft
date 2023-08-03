@@ -11,9 +11,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+ALLOWED_HOSTS = ["*"]
 
 import os
 import dotenv
+import dj_database_url
 
 dotenv.load_dotenv()
 
@@ -90,17 +92,20 @@ WSGI_APPLICATION = "_desafio.wsgi.application"
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv("POSTGRES_DB"),
-        'USER': os.getenv("POSTGRES_USER"),
-        'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.getenv("POSTGRES_DB"),
+#         'USER': os.getenv("POSTGRES_USER"),
+#         'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
+DATABASES = {
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL")) 
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -136,6 +141,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+MEDIA_URL = "media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
