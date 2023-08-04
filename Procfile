@@ -1,0 +1,1 @@
+web: gunicorn _desafio.wsgi --log-file - 
