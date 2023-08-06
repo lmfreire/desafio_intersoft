@@ -14,7 +14,7 @@ from pathlib import Path
 
 import os
 import dotenv
-# import dj_database_url
+import dj_database_url
 
 dotenv.load_dotenv()
 
@@ -91,20 +91,21 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.getenv("POSTGRES_DB"),
-#         'USER': os.getenv("POSTGRES_USER"),
-#         'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv("POSTGRES_DB"),
+        'USER': os.getenv("POSTGRES_USER"),
+        'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
-# DATABASES = {
-#     "default": dj_database_url.parse(os.environ.get("DATABASE_URL")) 
-# }
+DATABASES = {
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL")) 
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
